@@ -1,5 +1,23 @@
+:root {
+  --primary-color: blue;
+  --secondary-color: red;
+  --primary-text-color: black;
+  --secondary-text-color: white;
+  --add-message-form-color: #f5f5f5;
+}
+
 .App {
-  text-align: center;
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr) 60px;
+  grid-template-areas:
+    "r m m m m m"
+    "r m m m m m"
+    "r m m m m m"
+    "r m m m m m"
+    "r m m m m m"
+    "n f f f f f"
 }
 
 .App-logo {
@@ -25,4 +43,31 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.add-message-form {
+  background: var(--add-message-form-color);
+  display: flex;
+}
+
+.add-message-form input {
+  width: 100%;
+  padding: 10px 10px;
+  margin: 0;
+  border-style: none;
+  background: var(--add-message-form-color);
+  font-weight: 200;
+}
+
+.add-message-form button {
+  width: 100px;
+  text-align: center;
+}
+
+.add-message-form input:focus {
+  outline-width: 0;
+}
+
+.add-message-form input::-moz-placeholder {
+  color: var(--primary-text-color);
 }
