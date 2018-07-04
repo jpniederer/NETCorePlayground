@@ -20,6 +20,76 @@
     "n f f f f f"
 }
 
+.rooms-list {
+  grid-area: r;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: var(--main-color);
+  overflow: scroll;
+  height: 100%;
+}
+
+.rooms-list ul {
+  list-style-type: none;    
+  padding: 0;
+  overflow: scoll;
+}
+
+.rooms-list li {
+  margin: 10px 0;
+}
+
+.rooms-list h3 {
+  margin: 5px 0;
+  color: var(--secondary-color);
+}
+
+.new-room-form {
+  grid-area: n;
+  padding: 0 5px;
+  background: var(--secondary-color);
+  color: var(--primary-text-color);
+}
+
+.new-room-form form {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-room-form input {
+  width: 135px;
+  background: var(--secondary-color);
+}
+
+.new-room-form button {
+  background: var(--secondary-color);
+  color: var(--primary-text-color);
+  border: 0;
+}
+
+.new-room-form input::placeholder {
+  color: var(--main-text-color);
+  font-weight: 200;
+}
+
+.new-room-form input:focus {
+  outline-width: 0;
+}
+
+.new-room-form input {
+  border: 0;
+}
+
+.new-room-form button {
+  border: 0;
+}
+
+.message {
+  margin: 15px 0;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -46,6 +116,7 @@
 }
 
 .add-message-form {
+  grid-area: f;
   background: var(--add-message-form-color);
   display: flex;
 }
