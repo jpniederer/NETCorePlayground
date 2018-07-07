@@ -8,5 +8,6 @@ namespace ChatAppWithSignalR.Services
     public interface IMessageService
     {
         Task<List<Message>> GetMessagesForChatRoomAsync(Guid roomId);
+        Task<bool> AddMessageToRoomAsync(Guid roomId, Message message);
     }
 }

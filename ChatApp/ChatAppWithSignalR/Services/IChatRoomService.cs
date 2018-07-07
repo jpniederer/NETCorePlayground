@@ -8,5 +8,6 @@ namespace ChatAppWithSignalR.Services
     public interface IChatRoomService
     {
         Task<List<ChatRoom>> GetChatRoomsAsync();
+        Task<bool> AddChatRoomAsync(ChatRoom newChatRoom);
     }
 }
