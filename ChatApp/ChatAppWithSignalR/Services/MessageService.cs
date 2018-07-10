@@ -17,6 +17,13 @@ namespace ChatAppWithSignalR.Services
             _context = context;
         }
 
+        public async Task<List<Message>> GetMessagesAsync()
+        {
+            var messages = await _context.Messages.ToListAsync<Message>();
+
+            return messages;
+        }
+
         public async Task<List<Message>> GetMessagesForChatRoomAsync(Guid roomId)
         {
             var messagesForRoom = await _context.Messages

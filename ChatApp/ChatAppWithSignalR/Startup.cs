@@ -46,8 +46,8 @@ namespace ChatAppWithSignalR
                        .AllowCredentials();
             }));
 
-            services.AddSingleton<IChatRoomService, ChatRoomService>();
-            services.AddSingleton<IMessageService, MessageService>();
+            services.AddScoped<IChatRoomService, ChatRoomService>();
+            services.AddScoped<IMessageService, MessageService>();
             services.AddSignalR();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
