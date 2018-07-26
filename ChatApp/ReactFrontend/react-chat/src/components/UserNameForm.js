@@ -28,11 +28,11 @@ class UserNameForm extends Component {
     return (
       <form
         onSubmit={this.handleSubmit}
-        className="">
+        className="add-message-form">
         <input
           onChange={this.handleChange}
           value={this.state.newUserName}
-          maxlength={20}
+          maxLength={20}
           placeholder="You need a name to chat..."
           type="text" />
         <button type='submit' onClick={this.handleSubmit}>Enter Chat</button>

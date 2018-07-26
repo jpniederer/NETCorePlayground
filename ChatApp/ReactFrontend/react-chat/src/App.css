@@ -6,6 +6,19 @@
   --add-message-form-color: #f5f5f5;
 }
 
+#root {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 200;
+  color: #3e5869;
+}
+
 .App {
   display: grid;
   height: 100%;
@@ -90,6 +103,40 @@
   margin: 15px 0;
 }
 
+.message .message-username {
+  font-size: 11px;
+  color: var(--primary-text-color);
+  opacity: 0.9;
+  margin-bottom: 6px;
+}
+
+.message .message-text {
+  background: var(--main-color);
+  color: var(--secondary-color);
+  display: inline;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.message-list {
+  grid-area: m;
+  box-sizing: border-box;
+  padding-left: 6px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  background: var(--secondary-color);
+}
+
+.message-list .join-room {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 34px;
+  font-weight: 300;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -139,6 +186,6 @@
   outline-width: 0;
 }
 
-.add-message-form input::-moz-placeholder {
+.add-message-form input::placeholder {
   color: var(--primary-text-color);
 }

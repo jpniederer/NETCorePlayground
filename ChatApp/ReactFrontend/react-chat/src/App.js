@@ -5,6 +5,7 @@ import { setUserName } from './store/actions/userActions';
 import AddChatRoomForm from './components/AddChatRoomForm';
 import AddMessageForm from './components/AddMessageForm';
 import ChatRoomList from './components/ChatRoomList';
+import MessageList from './components/MessageList';
 import UserNameForm from './components/UserNameForm';
 
 import './App.css';
@@ -20,11 +21,14 @@ class App extends Component {
           roomId = {1}
           openRoom = {() => 1}
         />
+        <MessageList
+          roomId={1}
+          messages={[{ userName: 'josh', text: "test message"}]} 
+        />
         {
           userName ? <AddMessageForm /> :
           <UserNameForm onSetUserName={onSetUserName} />
         }
-        <AddMessageForm />
         <AddChatRoomForm />
       </div>
     );
