@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ChatAppWithSignalR.Models;
 using ChatAppWithSignalR.Services;
+using Microsoft.AspNetCore.Cors;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ChatAppWithSignalR.Controllers
 {
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     public class ChatRoomController : Controller
     {

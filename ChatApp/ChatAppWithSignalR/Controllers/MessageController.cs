@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ChatAppWithSignalR.Models;
 using ChatAppWithSignalR.Services;
+using Microsoft.AspNetCore.Cors;
 
 namespace ChatAppWithSignalR.Controllers
 {
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     public class MessageController : Controller
     {

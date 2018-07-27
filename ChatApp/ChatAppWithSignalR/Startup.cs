@@ -42,8 +42,7 @@ namespace ChatAppWithSignalR
             builder =>
             {
                 builder.AllowAnyMethod().AllowAnyHeader()
-                       .WithOrigins("http://localhost:55830")
-                       .AllowCredentials();
+                       .AllowAnyOrigin();                     
             }));
 
             services.AddScoped<IChatRoomService, ChatRoomService>();
