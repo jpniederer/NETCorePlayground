@@ -1,0 +1,13 @@
+https://chatappwithsignalr.azurewebsites.net/api/chatroom
+Gets all chat rooms that have been added to the database.
+
+https://chatappwithsignalr.azurewebsites.net/api/chatroom
+POST
+Chatroom (Id: Guid, Name: string)
+
+https://chatappwithsignalr.azurewebsites.net/api/message
+Gets all messages that have been added to the database.
+
+
+https://chatappwithsignalr.azurewebsites.net/api/message/roomId
+Gets all messages for a specific room.

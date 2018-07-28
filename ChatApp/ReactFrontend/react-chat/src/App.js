@@ -17,8 +17,6 @@ class App extends Component {
     return (
       <div className="App">
         <ChatRoomList
-          rooms={[{ id: 1, name: 'Test Room'}]}
-          roomId = {1}
           openRoom = {() => 1}
         />
         <MessageList

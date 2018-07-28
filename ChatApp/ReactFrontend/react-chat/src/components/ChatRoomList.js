@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { requestRooms } from '../store/actions/roomActions';
 
 class ChatRoomList extends Component {
+  componentDidMount() {
+    this.props.onRequestRoom();
+  }
+  
   render() {
     return (
       <div className="rooms-list">
@@ -23,4 +29,17 @@ class ChatRoomList extends Component {
   }
 }
 
-export default ChatRoomList;
+const mapStateToProps = (state) => {
+  return {
+    rooms: state.requestRooms.rooms,
+    currentRoom: state.requestRooms.currentRoom
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRequestRoom: () => dispatch(requestRooms())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatRoomList);
