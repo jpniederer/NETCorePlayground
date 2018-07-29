@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { requestRooms } from '../store/actions/roomActions';
+import { requestRooms, setRoom } from '../store/actions/roomActions';
 
 class ChatRoomList extends Component {
   componentDidMount() {
-    this.props.onRequestRoom();
+    this.props.onRequestRooms();
   }
-  
+
   render() {
     return (
       <div className="rooms-list">
@@ -17,7 +17,7 @@ class ChatRoomList extends Component {
               return (
                 <li key={room.id} className={'room + {active}'}>
                   <a
-                    onClick={() => this.props.openRoom(room.id)} href="#">
+                    onClick={() => this.props.onSetRoom(room)} href="#">
                     {room.name}
                   </a>
                 </li>
@@ -38,7 +38,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRequestRoom: () => dispatch(requestRooms())
+    onRequestRooms: () => dispatch(requestRooms()),
+    onSetRoom: (room) => dispatch(setRoom(room))
   }
 }
 

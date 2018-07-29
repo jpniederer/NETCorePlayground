@@ -7,22 +7,23 @@ import AddMessageForm from './components/AddMessageForm';
 import ChatRoomList from './components/ChatRoomList';
 import MessageList from './components/MessageList';
 import UserNameForm from './components/UserNameForm';
+import NoRoomSelected from './components/NoRoomSelected';
 
 import './App.css';
 
 class App extends Component {
   render() {
-    const { userName, onSetUserName } = this.props;
+    const { userName, onSetUserName, currentRoom } = this.props;
 
     return (
       <div className="App">
         <ChatRoomList
           openRoom = {() => 1}
         />
-        <MessageList
-          roomId={1}
-          messages={[{ userName: 'josh', text: "test message"}]} 
-        />
+        {
+          currentRoom ? <MessageList roomId={currentRoom.id} /> :
+          <NoRoomSelected />
+        }
         {
           userName ? <AddMessageForm /> :
           <UserNameForm onSetUserName={onSetUserName} />
@@ -35,7 +36,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userName: state.userInfo.userName
+    userName: state.userInfo.userName,
+    currentRoom: state.requestRooms.currentRoom
   }
 }
 
