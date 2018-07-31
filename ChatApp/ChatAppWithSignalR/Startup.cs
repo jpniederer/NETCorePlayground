@@ -41,8 +41,10 @@ namespace ChatAppWithSignalR
             services.AddCors(options => options.AddPolicy("CorsPolicy",
             builder =>
             {
-                builder.AllowAnyMethod().AllowAnyHeader()
-                       .AllowAnyOrigin();                     
+                builder.AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .AllowAnyOrigin()
+                       .AllowCredentials();                     
             }));
 
             services.AddScoped<IChatRoomService, ChatRoomService>();
