@@ -11,3 +11,11 @@ Gets all messages that have been added to the database.
 
 https://chatappwithsignalr.azurewebsites.net/api/message/roomId
 Gets all messages for a specific room.
+
+SignalR
+https://chatappwithsignalr.azurewebsites.net/chatHub
+ReceiveMessage - Sends the message from the server to listeners.
+SendMessage - Sends the message to the Hub from a user.
+
+NewRoom - Sends the new chat room to the users from the server.
+AddChatRoom - A user creates a new Chat Room, gets sent to the Hub.
