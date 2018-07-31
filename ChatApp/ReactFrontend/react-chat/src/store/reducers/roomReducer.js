@@ -3,7 +3,8 @@ import {
   REQUEST_ROOMS_SUCCESS,
   REQUEST_ROOMS_FAILED,
   ADD_ROOM,
-  RECEIVE_ROOM
+  RECEIVE_ROOM,
+  SET_ROOM
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -19,6 +20,8 @@ export const requestRooms =  (state = initialState, action={}) => {
       return Object.assign({}, state, { rooms: action.payload, isPending: false });
     case REQUEST_ROOMS_FAILED:
       return Object.assign({}, state, { error: action.payload });
+    case SET_ROOM:
+      return Object.assign({}, state, { currentRoom: action.payload });
     default:
       return state;
   }
