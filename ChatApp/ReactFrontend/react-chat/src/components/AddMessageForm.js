@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class AddMessageForm extends Component {
   constructor() {
     super();
 
     this.state = {
-      newMessage: ''
+      newMessage: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,27 +20,36 @@ class AddMessageForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.connection
+      .invoke(
+        "SendMessage",
+        this.props.roomId,
+        this.props.userName,
+        this.state.newMessage
+      )
+      .catch(err => console.error(err.toString()));
 
     // Need to handle sending the message to the Chat Room.
     this.setState({
-      newMessage: ''
+      newMessage: ""
     });
     console.log(this.state.newMessage);
   }
 
   render() {
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className="add-message-form">
+      <form onSubmit={this.handleSubmit} className="add-message-form">
         <input
           onChange={this.handleChange}
           value={this.state.newMessage}
           placeholder="Say something to the room..."
-          type="text" />
-        <button type='submit' onClick={this.handleSubmit}>Submit</button>
+          type="text"
+        />
+        <button type="submit" onClick={this.handleSubmit}>
+          Submit
+        </button>
       </form>
-    )
+    );
   }
 }
 

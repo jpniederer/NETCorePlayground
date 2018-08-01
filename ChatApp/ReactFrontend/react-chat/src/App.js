@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setUserName } from './store/actions/userActions';
-import { HubConnectionBuilder } from '@aspnet/signalr';
-//import { signalR } from '@aspnet/signalr';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setUserName } from "./store/actions/userActions";
+import { receiveMessage } from "./store/actions/messageActions";
+import { HubConnectionBuilder } from "@aspnet/signalr";
 
-import AddChatRoomForm from './components/AddChatRoomForm';
-import AddMessageForm from './components/AddMessageForm';
-import ChatRoomList from './components/ChatRoomList';
-import MessageList from './components/MessageList';
-import UserNameForm from './components/UserNameForm';
-import NoRoomSelected from './components/NoRoomSelected';
+import AddChatRoomForm from "./components/AddChatRoomForm";
+import AddMessageForm from "./components/AddMessageForm";
+import ChatRoomList from "./components/ChatRoomList";
+import MessageList from "./components/MessageList";
+import UserNameForm from "./components/UserNameForm";
+import NoRoomSelected from "./components/NoRoomSelected";
 
-import './App.css';
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -19,11 +19,26 @@ class App extends Component {
 
     this.connection = new HubConnectionBuilder()
       .withUrl("https://chatappwithsignalr.azurewebsites.net/chatHub")
-      .build(); 
+      .build();
   }
   componentDidMount() {
-    this.connection.start({ withCredentials: false })
+    this.connection
+      .start({ withCredentials: false })
       .catch(err => console.error(err.toString()));
+
+    this.connection.on(
+      "ReceiveMessage",
+      (user, message, roomId, messageId, postedAt) => {
+        this.props.onReceiveMessage(
+          user,
+          message,
+          roomId,
+          messageId,
+          postedAt,
+          this.props.currentRoom.id
+        );
+      }
+    );
   }
 
   render() {
@@ -31,35 +46,55 @@ class App extends Component {
 
     return (
       <div className="App">
-        <ChatRoomList
-          openRoom = {() => 1}
-          connection={this.connection}
-        />
-        {
-          currentRoom ? <MessageList roomId={currentRoom.id} connection={this.connection} /> :
+        <ChatRoomList openRoom={() => 1} connection={this.connection} />
+        {currentRoom ? (
+          <MessageList roomId={currentRoom.id} connection={this.connection} />
+        ) : (
           <NoRoomSelected />
-        }
-        {
-          userName ? <AddMessageForm /> :
+        )}
+        {userName ? (
+          <AddMessageForm roomId={currentRoom.id} userName={userName} connection={this.connection} />
+        ) : (
           <UserNameForm onSetUserName={onSetUserName} />
-        }
+        )}
         <AddChatRoomForm connection={this.connection} />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     userName: state.userInfo.userName,
     currentRoom: state.requestRooms.currentRoom
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    onSetUserName: (name) => dispatch(setUserName(name))
-  }
-}
+    onSetUserName: name => dispatch(setUserName(name)),
+    onReceiveMessage: (
+      user,
+      message,
+      roomId,
+      messageId,
+      postedAt,
+      currentRoomId
+    ) =>
+      dispatch(
+        receiveMessage(
+          user,
+          message,
+          roomId,
+          messageId,
+          postedAt,
+          currentRoomId
+        )
+      )
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
