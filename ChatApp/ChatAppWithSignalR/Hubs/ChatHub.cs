@@ -28,7 +28,7 @@ namespace ChatAppWithSignalR.Hubs
             };
 
             await _messageService.AddMessageToRoomAsync(roomId, m);
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await Clients.All.SendAsync("ReceiveMessage", user, message, roomId, m.Id, m.PostedAt);
         }
 
         public async Task AddChatRoom(string roomName)
@@ -39,7 +39,7 @@ namespace ChatAppWithSignalR.Hubs
             };
 
             await _chatRoomService.AddChatRoomAsync(chatRoom);
-            await Clients.All.SendAsync("NewRoom", roomName);
+            await Clients.All.SendAsync("NewRoom", roomName, chatRoom.Id);
         }
 
         public override async Task OnConnectedAsync()
