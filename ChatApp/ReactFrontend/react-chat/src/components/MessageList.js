@@ -5,7 +5,6 @@ import {
   requestMessages
 } from "../store/actions/messageActions";
 import Message from "./Message";
-import { HubConnection } from "@aspnet/signalr";
 
 class MessageList extends Component {
   componentDidMount() {
@@ -13,6 +12,12 @@ class MessageList extends Component {
       this.props.onRequestMessages(this.props.currentRoom.id);
     }
     this.props.onRequestMessages(this.props.roomId);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.roomId !== prevProps.roomId) {
+      this.props.onRequestMessages(this.props.roomId);
+    }
   }
 
   render() {

@@ -13,11 +13,11 @@ class ChatRoomList extends Component {
         <ul>
           <h3>Rooms Available</h3>
             {this.props.rooms.map(room => {
-              const active = room.id === this.props.roomId ? 'active' : '';
+              
               return (
-                <li key={room.id} className={'room + {active}'}>
+                <li key={room.id} className={'room'}>
                   <a
-                    onClick={() => this.props.onSetRoom(room)} href="#">
+                    onClick={() => this.props.onSetRoom(room)} href="#active">
                     {room.name}
                   </a>
                 </li>

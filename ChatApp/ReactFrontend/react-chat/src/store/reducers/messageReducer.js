@@ -2,7 +2,6 @@ import {
   REQUEST_MESSAGES_PENDING,
   REQUEST_MESSAGES_SUCCESS,
   REQUEST_MESSAGES_FAILED,
-  ADD_MESSAGE,
   RECEIVE_MESSAGE
 } from "../actions/actionTypes";
 
@@ -26,7 +25,7 @@ export const requestMessages = (state = initialState, action = {}) => {
       if (action.payload.currentRoomId === action.payload.roomId) {
         return {
           ...state,
-          messages: [...state.messages, action.message]
+          messages: [...state.messages, action.payload.message]
         };
       } else {
         return state;
