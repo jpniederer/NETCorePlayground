@@ -22,7 +22,7 @@ export const requestRooms =  (state = initialState, action={}) => {
     case RECEIVE_ROOM:
       return {
         ...state,
-        rooms: [...state.rooms, action.room]
+        rooms: [...state.rooms, action.payload.room]
       };
     case SET_ROOM:
       return {

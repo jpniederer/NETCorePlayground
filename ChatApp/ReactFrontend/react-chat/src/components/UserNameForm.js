@@ -20,8 +20,7 @@ class UserNameForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onSetUserName(this.state.newUserName)
-    console.log(`The username has been set to ${this.state.newUserName}`);
+    this.props.onSetUserName(this.state.newUserName);
   }
 
   render() {

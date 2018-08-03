@@ -22,7 +22,7 @@ export const requestMessages = (state = initialState, action = {}) => {
     case REQUEST_MESSAGES_FAILED:
       return Object.assign({}, state, { error: action.payload });
     case RECEIVE_MESSAGE:
-      if (action.payload.currentRoomId === action.payload.roomId) {
+      if (action.payload.currentRoomId === action.payload.message.roomId) {
         return {
           ...state,
           messages: [...state.messages, action.payload.message]

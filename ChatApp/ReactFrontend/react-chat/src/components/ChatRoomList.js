@@ -1,10 +1,21 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { requestRooms, setRoom } from '../store/actions/roomActions';
+import { requestRooms, receiveRoom, setRoom } from '../store/actions/roomActions';
 
 class ChatRoomList extends Component {
   componentDidMount() {
     this.props.onRequestRooms();
+
+    this.props.connection.on(
+      "NewRoom",
+      (roomName, roomId) =>
+      {
+        this.props.onReceiveRoom(
+          roomName,
+          roomId
+        )
+      }
+    )
   }
 
   render() {
@@ -39,6 +50,16 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onRequestRooms: () => dispatch(requestRooms()),
+    onReceiveRoom: (
+      roomName,
+      id
+    ) =>
+      dispatch(
+        receiveRoom(
+          roomName,
+          id
+        )
+      ),
     onSetRoom: (room) => dispatch(setRoom(room))
   }
 }

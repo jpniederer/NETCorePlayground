@@ -33,7 +33,6 @@ class AddMessageForm extends Component {
     this.setState({
       newMessage: ""
     });
-    console.log(this.state.newMessage);
   }
 
   render() {

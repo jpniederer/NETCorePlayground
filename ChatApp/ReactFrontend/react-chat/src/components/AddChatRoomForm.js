@@ -24,7 +24,6 @@ class AddChatRoomForm extends Component {
       .invoke("AddChatRoom", this.state.roomName)
       .catch(err => console.error(err.toString()));
 
-    // Need to handle adding the Chat Room
     this.setState({
       roomName: ""
     });

@@ -54,9 +54,9 @@ class App extends Component {
         )}
         {userName ? (
           <AddMessageForm roomId={currentRoom.id} userName={userName} connection={this.connection} />
-        ) : (
+        ) : (currentRoom ? (
           <UserNameForm onSetUserName={onSetUserName} />
-        )}
+        ) : <div> Pick a room.</div>)}
         <AddChatRoomForm connection={this.connection} />
       </div>
     );
