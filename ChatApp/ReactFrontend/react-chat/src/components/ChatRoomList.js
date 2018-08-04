@@ -22,7 +22,7 @@ class ChatRoomList extends Component {
     return (
       <div className="rooms-list">
         <ul>
-          <h3>Rooms Available</h3>
+          <h4>Rooms Available</h4>
             {this.props.rooms.map(room => {
               
               return (

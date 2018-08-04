@@ -10,6 +10,7 @@ import ChatRoomList from "./components/ChatRoomList";
 import MessageList from "./components/MessageList";
 import UserNameForm from "./components/UserNameForm";
 import NoRoomSelected from "./components/NoRoomSelected";
+import Title from "./components/Title";
 
 import "./App.css";
 
@@ -25,20 +26,6 @@ class App extends Component {
     this.connection
       .start({ withCredentials: false })
       .catch(err => console.error(err.toString()));
-
-    this.connection.on(
-      "ReceiveMessage",
-      (user, message, roomId, messageId, postedAt) => {
-        this.props.onReceiveMessage(
-          user,
-          message,
-          roomId,
-          messageId,
-          postedAt,
-          this.props.currentRoom.id
-        );
-      }
-    );
   }
 
   render() {
@@ -46,6 +33,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Title />
         <ChatRoomList openRoom={() => 1} connection={this.connection} />
         {currentRoom ? (
           <MessageList roomId={currentRoom.id} connection={this.connection} />

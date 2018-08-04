@@ -8,33 +8,36 @@ import Message from "./Message";
 
 class MessageList extends Component {
   componentDidMount() {
-    if (this.props.currentRoom) {
-      this.props.onRequestMessages(this.props.currentRoom.id);
-    }
+    this.props.connection.on(
+      "ReceiveMessage",
+      (user, message, roomId, messageId, postedAt) => {
+        this.props.onReceiveMessage(
+          user,
+          message,
+          roomId,
+          messageId,
+          postedAt,
+          this.props.currentRoom.id
+        );
+      }
+    );
+
     this.props.onRequestMessages(this.props.roomId);
+    this.scrollToBottom();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.roomId !== prevProps.roomId) {
       this.props.onRequestMessages(this.props.roomId);
     }
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    this.el.scrollIntoView({ behavior: 'smooth' });
   }
 
   render() {
-    // this.props.connection.on(
-    //   "ReceiveMessage",
-    //   (user, message, roomId, messageId, postedAt) => {
-    //     this.props.onReceiveMessage(
-    //       user,
-    //       message,
-    //       roomId,
-    //       messageId,
-    //       postedAt,
-    //       this.props.roomId
-    //     );
-    //   }
-    // );
-
     if (!this.props.roomId) {
       return (
         <div className="message-list">
@@ -54,6 +57,7 @@ class MessageList extends Component {
             />
           );
         })}
+        <div ref={el => { this.el = el; }} />
       </div>
     );
   }

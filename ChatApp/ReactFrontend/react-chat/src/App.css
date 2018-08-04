@@ -23,14 +23,20 @@ html, body {
   display: grid;
   height: 100%;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(5, 1fr) 60px;
+  grid-template-rows: 30px repeat(4, 1fr) 60px;
   grid-template-areas:
-    "r m m m m m"
+    "t m m m m m"
     "r m m m m m"
     "r m m m m m"
     "r m m m m m"
     "r m m m m m"
     "n f f f f f"
+}
+
+.title {
+  grid-area: t;
+  margin: 5px 0;
+  color: green;
 }
 
 .rooms-list {
@@ -52,9 +58,9 @@ html, body {
   margin: 10px 0;
 }
 
-.rooms-list h3 {
+.rooms-list h4 {
   margin: 5px 0;
-  color: var(--secondary-color);
+  color: var(--primary-text-color);
 }
 
 .new-room-form {
