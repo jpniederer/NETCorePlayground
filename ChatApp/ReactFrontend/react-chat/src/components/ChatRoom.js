@@ -1,6 +1,10 @@
-export default ChatRoom = ({name, peopleInside, selected}) => (
+import React from 'react';
+
+const ChatRoom = ({name, peopleInside, selected}) => (
   <div className='{selected ? {} : {}'>
-    <h3>{this.props.name}</h3>
-    <p>{this.props.peopleInside}</p>
+    <h3>{name}</h3>
+    <p>{peopleInside}</p>
   </div>
 )
+
+export default ChatRoom;

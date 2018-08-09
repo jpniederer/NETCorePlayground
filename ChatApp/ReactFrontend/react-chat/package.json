@@ -13,6 +13,10 @@
     "redux-thunk": "^2.3.0",
     "tslib": "^1.9.3"
   },
+  "devDependencies": {
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

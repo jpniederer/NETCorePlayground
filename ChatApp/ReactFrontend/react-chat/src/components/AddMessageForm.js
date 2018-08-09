@@ -29,7 +29,6 @@ class AddMessageForm extends Component {
       )
       .catch(err => console.error(err.toString()));
 
-    // Need to handle sending the message to the Chat Room.
     this.setState({
       newMessage: ""
     });
