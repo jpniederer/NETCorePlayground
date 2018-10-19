@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactIdentity.IdentityProvider", "src\ReactIdentity.IdentityProvider\ReactIdentity.IdentityProvider.csproj", "{D6DF8B5D-98CF-4201-9FF3-0E5BE50592E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactIdentity.ChallengeApi", "src\ReactIdentity.ChallengeApi\ReactIdentity.ChallengeApi.csproj", "{1BEAD99F-9584-429A-B873-62C4EEBF9CC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6DF8B5D-98CF-4201-9FF3-0E5BE50592E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6DF8B5D-98CF-4201-9FF3-0E5BE50592E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6DF8B5D-98CF-4201-9FF3-0E5BE50592E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6DF8B5D-98CF-4201-9FF3-0E5BE50592E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BEAD99F-9584-429A-B873-62C4EEBF9CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BEAD99F-9584-429A-B873-62C4EEBF9CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BEAD99F-9584-429A-B873-62C4EEBF9CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BEAD99F-9584-429A-B873-62C4EEBF9CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E02283B3-672F-4997-8AE3-3F062BFD764B}
+	EndGlobalSection
+EndGlobal
